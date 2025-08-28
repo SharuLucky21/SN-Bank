@@ -1,0 +1,215 @@
+/* 🌟 Modern Banking App Theme */
+:root {
+  --bg: #0a0f1f;
+  --card: rgba(255, 255, 255, 0.05);
+  --glass: rgba(255, 255, 255, 0.08);
+  --text: #e9f0ff;
+  --muted: #9fb4d8;
+  --accent: #4e7cff;
+  --accent-2: #2ad1ff;
+  --danger: #ff4e78;
+  --success: #2ecc71;
+  --warning: #ffc107;
+  --radius: 18px;
+  --transition: 0.25s ease;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, sans-serif;
+}
+
+/* 🌌 Background */
+body {
+  background: radial-gradient(circle at top left, #121a34, #050913);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* 🔝 Navbar */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  background: rgba(15, 20, 40, 0.9);
+  backdrop-filter: blur(14px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav .brand {
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-text-fill-color: transparent;
+}
+
+.nav .links a {
+  margin: 0 10px;
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.nav .links a:hover {
+  color: var(--accent-2);
+  text-shadow: 0 0 6px var(--accent-2);
+}
+
+/* 🏦 Container */
+.container {
+  width: min(1000px, 92%);
+  margin: 28px auto;
+  flex: 1;
+}
+
+/* 📦 Card */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+  display: grid;
+  gap: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* 🖋️ Inputs */
+.card input,
+.card select {
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: var(--transition);
+}
+
+.card input:focus,
+.card select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* 🔘 Buttons */
+.card button {
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.card button:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+/* 📊 Tiles (Dashboard) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.tile {
+  background: var(--glass);
+  padding: 20px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--text);
+  transition: var(--transition);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.tile:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+/* 💳 Balance Rows */
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+  font-size: 1.05rem;
+}
+
+/* 📑 Tables */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.table th, .table td {
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  text-align: left;
+}
+
+.table .type.debit { color: var(--danger); font-weight: 700; }
+.table .type.credit { color: var(--success); font-weight: 700; }
+
+/* 🔔 Flash Messages */
+.flash-wrap {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.flash {
+  padding: 12px 14px;
+  border-radius: 12px;
+  animation: fadeIn 0.4s ease;
+}
+
+.flash.success { background: rgba(46, 204, 113, 0.15); border: 1px solid var(--success); }
+.flash.danger { background: rgba(255, 78, 120, 0.15); border: 1px solid var(--danger); }
+.flash.warning { background: rgba(255, 193, 7, 0.15); border: 1px solid var(--warning); }
+.flash.info { background: rgba(42, 209, 255, 0.15); border: 1px solid var(--accent-2); }
+
+/* ⚡ Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📱 Mobile */
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.logo span {
+  font-weight: bold;
+  font-size: 22px;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
