@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+
+<a href="{{ url_for('dashboard') }}" class="logo">
+  <span style="font-weight: bold; font-size: 20px; color: white;">SN Bank</span>
+</a>
+
+
+<div class="grid">
+  <a class="tile" href="{{ url_for('balance') }}">
+    <h3>View Balance</h3>
+    <p>Check your current account balance.</p>
+  </a>
+  <a class="tile" href="{{ url_for('transfer_form') }}">
+    <h3>Make a Transfer</h3>
+    <p>Send money to another account.</p>
+  </a>
+  <a class="tile" href="{{ url_for('transactions') }}">
+    <h3>Transaction History</h3>
+    <p>Review all your account activity.</p>
+  </a>
+</div>
+
+<hr>
+
+<h3>Recent Transactions</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date/Time</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Counterparty</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for t in recent_txns %}
+    <tr>
+      <td>{{ t.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+      <td class="type {{ t.type }}">{{ t.type|capitalize }}</td>
+      <td>₹{{ '%.2f'|format(t.amount) }}</td>
+      <td>{{ t.counterparty or '-' }}</td>
+      <td>{{ t.description }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="5" style="text-align:center;">No transactions yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

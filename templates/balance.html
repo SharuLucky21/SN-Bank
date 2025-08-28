@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>My Account</h2>
+
+<!-- 3D Debit Card Component -->
+<div class="card3d">
+  <div class="front">
+    <h3>{{ user.name }}</h3>
+    <p>Account: {{ user.account_number }}</p>
+    <h2>₹{{ '%.2f'|format(user.balance) }}</h2>
+  </div>
+  <div class="back">
+    <p>MockBank Secure</p>
+    <div class="chip"></div>
+  </div>
+</div>
+
+<!-- Some extra account details below -->
+<div class="card">
+  <div class="row"><span>Account Holder</span><strong>{{ user.name }}</strong></div>
+  <div class="row"><span>Account Number</span><strong>{{ user.account_number }}</strong></div>
+  <div class="row"><span>Balance</span><strong>₹{{ '%.2f'|format(user.balance) }}</strong></div>
+</div>
+{% endblock %}

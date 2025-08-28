@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Transfer Money</h2>
+<form method="post" action="{{ url_for('do_transfer') }}" class="card">
+  
+  <label>Recipient Account / Phone Number</label>
+  <input type="text" name="to_account_or_phone" placeholder="Enter account number or phone" required />
+
+  <label>Amount (₹)</label>
+  <input type="number" name="amount" step="0.01" min="0" placeholder="100.00" required />
+
+  <label>Note (optional)</label>
+  <input type="text" name="note" maxlength="120" placeholder="e.g., Rent for August" />
+
+  <button type="submit">Send</button>
+</form>
+<div class="hint">
+  <p>You can type the recipient’s <strong>account number</strong> or <strong>phone number</strong>.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Transaction History</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date/Time (UTC)</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Balance After</th>
+      <th>Counterparty</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for t in txns %}
+    <tr>
+      <td>{{ t.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+      <td class="type {{ t.type }}">{{ t.type|capitalize }}</td>
+      <td>₹{{ '%.2f'|format(t.amount) }}</td>
+      <td>₹{{ '%.2f'|format(t.balance_after) }}</td>
+      <td>{{ t.counterparty or '-' }}</td>
+      <td>{{ t.description }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="6" style="text-align:center;">No transactions yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

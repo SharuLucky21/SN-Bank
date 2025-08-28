@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero">
+  <h1>Welcome to the Bank</h1>
+  <p>Login with the demo account to continue.</p>
+  <form method="post" action="{{ url_for('do_login') }}" class="card">
+    <label>Email</label>
+    <input name="email" type="email" placeholder="user1@example.com" required />
+    <label>Password</label>
+    <input name="password" type="password" placeholder="password123" required />
+
+    <div class="hint">
+  <a href="{{ url_for('forgot_password') }}">Forgot Password?</a>
+</div>
+
+    <button type="submit">Login</button>
+  </form>
+  
+</section>
+{% endblock %}

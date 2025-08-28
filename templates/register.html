@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h2>Create a New Account</h2>
+  <form method="post" class="card">
+    <label>Full Name</label>
+    <input type="text" name="name" required />
+
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob" name="dob" class="form-control" required>
+
+    <label>Phone Number</label>
+    <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required />
+
+    <label>Email</label>
+    <input type="email" name="email" required />
+
+    <label>Password</label>
+    <input type="password" name="password" required minlength="6" />
+
+    <button type="submit">Register</button>
+  </form>
+  <div class="hint">
+    Already have an account? <a href="{{ url_for('login') }}">Login here</a>.
+  </div>
+</section>
+{% endblock %}
